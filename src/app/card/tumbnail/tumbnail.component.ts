@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./tumbnail.component.css']
 })
 export class TumbnailComponent {
+  imageUrl = 'https://static-cse.canva.com/blob/1037262/1600w-wK95f3XNRaM.jpg';
 }
