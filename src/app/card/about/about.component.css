@@ -1,6 +1,4 @@
-h3{
-  font-size: x-small;
-}
-p{
+.card{
+  cursor: pointer;
   font-size: x-small;
 }

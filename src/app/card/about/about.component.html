@@ -1,2 +1,7 @@
-<h3>{{title}}</h3>
-<p>{{name}}</p>
+
+
+<div class="card"  *ngFor="let card of cards" (click)="onCardClick(card)">
+  <div class="card-body">
+    <h2 class="card-title">{{ card.title }}</h2>
+    <p class="card-text">Status: {{ card.status }}</p>
+  </div>

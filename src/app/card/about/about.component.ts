@@ -6,6 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent {
-  title = 'The Most Actractive Thumbnail'
-  name = 'Jhon Doe'
+  cards = [
+    { title: 'Awsome Title IS HEREE!!!', status: 'Like' },
+  ];
+
+  onCardClick(card: any) {
+    card.status = card.status === 'Like' ? 'Unlike' : 'Like';
+  }
 }
