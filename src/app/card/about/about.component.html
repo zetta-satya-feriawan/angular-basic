@@ -1,7 +1,11 @@
+<!-- <div class="card"  *ngFor="let card of cards" (click)="onCardClick(card)">
+  <div >
+    <h2>{{ card.title }}</h2>
+    <p>Status: {{ card.status }}</p>
+  </div> -->
 
-
-<div class="card"  *ngFor="let card of cards" (click)="onCardClick(card)">
-  <div class="card-body">
-    <h2 class="card-title">{{ card.title }}</h2>
-    <p class="card-text">Status: {{ card.status }}</p>
+  <div class="card" (click)="onCardClick(card)">
+    <div >
+      <h2>{{ card.title }}</h2>
+      <p>Status: {{ card.status }}</p>
   </div>
