@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'app-task-list',
   template: `
@@ -30,6 +30,15 @@ export class TaskListComponent {
 
   onAddTask(task: any) {
     this.tasks.push(task);
+    console.log(this.tasks);
+    
+    // console.log(task);
+    
   }
+
+  onSelectTask(task: any) {
+    console.log('Task selected:', task);
+  }
+  
 }
 

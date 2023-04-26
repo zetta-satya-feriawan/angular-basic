@@ -1,15 +1,15 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-task-form',
   template: `
   <div class="container">
-    <form (submit)="onSubmit()">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)" >
       <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="name">
+      <input type="text" name="name" ngModel #first="ngModel"> 
       
       <label for="description">Description:</label>
-      <textarea id="description" [(ngModel)]="description"></textarea>
+      <textarea name="description" ngModel></textarea>
       
       <button type="submit">Add Task</button>
     </form>
@@ -46,10 +46,7 @@ export class TaskFormComponent {
   description: string = '';  
   @Output() addTask = new EventEmitter<any>();
 
-  onSubmit() {
-    const task = { name: this.name, description: this.description };
-    this.addTask.emit(task);
-    this.name = '';
-    this.description = '';
+  onSubmit(f: NgForm) {
+    this.addTask.emit(f.value);
   }
 }
