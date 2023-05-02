@@ -43,10 +43,10 @@ import { NgForm } from '@angular/forms';
 })
 export class TaskFormComponent {
   name: string = '';
-  description: string = '';  
+  description: string = '';
   @Output() addTask = new EventEmitter<any>();
 
   onSubmit(f: NgForm) {
-    this.addTask.emit(f.value);
+    this.addTask.emit(f.value); 
   }
 }
