@@ -1,0 +1,4 @@
+<div class="card-list">
+  <app-card *ngFor="let card of cards" [data]="card"></app-card>
+  <button mat-raised-button color="primary" (click)="updateAll()">Update All Cards</button>
+</div>
