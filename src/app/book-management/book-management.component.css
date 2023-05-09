@@ -1,0 +1,17 @@
+.container {
+  overflow: hidden;
+}
+
+.left {
+  width: 48%;
+  float: left;
+  background-color: #ccc;
+  height: 100vh;
+}
+
+.right {
+  width: 48%;
+  float: right;
+  background-color: #eee;
+  height: 100vh;
+}

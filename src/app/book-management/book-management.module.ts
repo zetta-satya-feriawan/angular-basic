@@ -5,6 +5,8 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookCardComponent } from './book-list/book-card/book-card.component';
 import { BookDetailComponent } from './book-list/book-detail/book-detail.component';
 import { MatCardModule } from "@angular/material/card";
+import {MatButtonModule} from '@angular/material/button';
+
 
 
 
@@ -16,10 +18,12 @@ import { MatCardModule } from "@angular/material/card";
     BookDetailComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatCardModule,
+    MatButtonModule
   ],
   exports: [
-    BookManagementComponent // export the BookManagementComponent so it can be used outside the module
+    BookManagementComponent 
   ]
 })
 export class BookManagementModule { }

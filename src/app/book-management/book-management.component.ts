@@ -11,21 +11,21 @@ export class BookManagementComponent implements OnInit {
   books: any[] = [
     {
       name: 'Book 1',
-      author: 'Author 1',
-      publisher: 'Publisher 1',
-      publishDate: '2021-01-01'
+      author: 'Author A',
+      publisher: 'Publisher A',
+      publishDate: '2023-01-01'
     },
     {
       name: 'Book 2',
-      author: 'Author 2',
-      publisher: 'Publisher 2',
-      publishDate: '2021-02-01'
+      author: 'Author B',
+      publisher: 'Publisher B',
+      publishDate: '2023-02-01'
     },
     {
       name: 'Book 3',
-      author: 'Author 3',
-      publisher: 'Publisher 3',
-      publishDate: '2021-03-01'
+      author: 'Author C',
+      publisher: 'Publisher C',
+      publishDate: '2023-03-01'
     }
   ];
 

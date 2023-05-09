@@ -1,9 +1,11 @@
-<div *ngIf="selectedBook; else noBookSelected">
-  <h3>{{ selectedBook.name }}</h3>
-  <p>Author: {{ selectedBook.author }}</p>
-  <p>Publisher: {{ selectedBook.publisher }}</p>
-  <p>Publish Date: {{ selectedBook.publishDate }}</p>
-</div>
+<mat-card *ngIf="selectedBook; else noBookSelected" class="container">
+  <mat-card-title>{{ selectedBook.name }}</mat-card-title>
+  <mat-card-content>
+    <p>Author: {{ selectedBook.author }}</p>
+    <p>Publisher: {{ selectedBook.publisher }}</p>
+    <p>Publish Date: {{ selectedBook.publishDate }}</p>
+  </mat-card-content>
+</mat-card>
 
 <ng-template #noBookSelected>
   <p>You don't have any selected book yet. Please select from the list of books that are available.</p>
