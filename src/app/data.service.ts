@@ -12,6 +12,8 @@ export class Data {
   ];
 
   cards = new BehaviorSubject<any[]>(this.cardsData);
+  
+  
 
   updateCard(id: number) {
     const cardIndex = this.cardsData.findIndex(card => card.id === id);
