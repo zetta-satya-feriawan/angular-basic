@@ -1,0 +1,10 @@
+<div *ngIf="selectedBook; else noBookSelected">
+  <h3>{{ selectedBook.name }}</h3>
+  <p>Author: {{ selectedBook.author }}</p>
+  <p>Publisher: {{ selectedBook.publisher }}</p>
+  <p>Publish Date: {{ selectedBook.publishDate }}</p>
+</div>
+
+<ng-template #noBookSelected>
+  <p>You don't have any selected book yet. Please select from the list of books that are available.</p>
+</ng-template>
