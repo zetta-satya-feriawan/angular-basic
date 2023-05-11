@@ -6,6 +6,9 @@ import { BookCardComponent } from './book-list/book-card/book-card.component';
 import { BookDetailComponent } from './book-list/book-detail/book-detail.component';
 import { MatCardModule } from "@angular/material/card";
 import {MatButtonModule} from '@angular/material/button';
+import { BookBuyComponent } from './book-list/book-buy/book-buy.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 
 
@@ -15,12 +18,15 @@ import {MatButtonModule} from '@angular/material/button';
     BookManagementComponent,
     BookListComponent,
     BookCardComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    BookBuyComponent
   ],
   imports: [
     CommonModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule,
+    // AppRoutingModule
   ],
   exports: [
     BookManagementComponent 

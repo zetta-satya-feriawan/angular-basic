@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookManagementComponent } from './book-management/book-management.component';
+import { BookBuyComponent } from './book-management/book-list/book-buy/book-buy.component';
+import { BookDetailComponent } from './book-management/book-list/book-detail/book-detail.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/book-management', pathMatch: 'full' },
-  { path: 'book-management', loadChildren: () => import('./book-management/book-management.module').then(m => m.BookManagementModule) },
-  { path: '**', redirectTo: '/book-management', pathMatch: 'full' }
+{path:'', component:BookManagementComponent},
+// {path:'**', component:BookManagementComponent},
+{path:'chart', component:BookBuyComponent},
+{path:'details/:name', component:BookDetailComponent},
+
 ];
 
 @NgModule({

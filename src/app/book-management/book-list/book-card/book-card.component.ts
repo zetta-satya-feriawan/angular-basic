@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, } from '@angular/core';
 import { BookManagementService } from '../../../book-management.service';
 
 @Component({
@@ -6,11 +6,13 @@ import { BookManagementService } from '../../../book-management.service';
   templateUrl: './book-card.component.html',
   styleUrls: ['./book-card.component.css']
 })
-export class BookCardComponent {
+export class BookCardComponent  {
 
   @Input() book: any;
 
   constructor(private bookManagementService: BookManagementService) { }
+
+ 
 
   selectBook(book: any) {
     this.bookManagementService.selectBook(book);

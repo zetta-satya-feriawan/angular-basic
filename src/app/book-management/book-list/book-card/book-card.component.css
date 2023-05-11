@@ -1,7 +1,19 @@
 .card{
-
   margin: 10px;
 }
+.image{
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+}
 img{
-  width: 200px;
+  width: 400px;
+}
+button{
+  margin-left: 10px;
+}
+
+.action{
+  display: flex;
+  justify-content: center;
 }

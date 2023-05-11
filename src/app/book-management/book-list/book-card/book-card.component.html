@@ -1,11 +1,25 @@
 <div class="card">
   <mat-card>
-      <mat-card-header>
-        <mat-card-title class="card-title">{{ book.name }}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image src="https://ajaib-wp-s3-artifact.s3.ap-southeast-1.amazonaws.com/img/2023/02/06230837/Anjing-Shiba-Inu.webp" alt="shiba">
-      <mat-card-actions>
-        <button mat-raised-button color="primary" (click)="selectBook(book)">Select Book</button>
-      </mat-card-actions>
+    <mat-card-header>
+      <mat-card-title class="card-title"></mat-card-title>
+    </mat-card-header>
+    <div class="image">
+      <img
+        mat-card-image
+        src="https://ajaib-wp-s3-artifact.s3.ap-southeast-1.amazonaws.com/img/2023/02/06230837/Anjing-Shiba-Inu.webp"
+        alt="shiba"
+      />
+    </div>
+    <mat-card-actions class="action">
+      <button mat-raised-button color="primary" (click)="selectBook(book)">
+        Select Book
+      </button>
+      <button mat-raised-button color="primary" (click)="selectBook(book)">
+        Details Book
+      </button>
+      <button mat-raised-button color="primary" routerLink="/chart">
+        Buy Book
+      </button>
+    </mat-card-actions>
   </mat-card>
 </div>
