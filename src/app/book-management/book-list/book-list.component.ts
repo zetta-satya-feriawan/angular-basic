@@ -18,9 +18,6 @@ export class BookListComponent implements OnInit {
     this.bookManagementService.books.subscribe((books: any[]) => {
       this.books = books;
     });
-    this.books = [{
-      name : this.route.snapshot.params['name']
-    }];
   }
 
 }

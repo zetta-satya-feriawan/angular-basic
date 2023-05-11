@@ -1,7 +1,7 @@
 <div class="card">
   <mat-card>
     <mat-card-header>
-      <mat-card-title class="card-title"></mat-card-title>
+      <mat-card-title class="card-title">{{ book.name }}</mat-card-title>
     </mat-card-header>
     <div class="image">
       <img
@@ -14,7 +14,11 @@
       <button mat-raised-button color="primary" (click)="selectBook(book)">
         Select Book
       </button>
-      <button mat-raised-button color="primary" (click)="selectBook(book)">
+      <button
+        mat-raised-button
+        color="primary"
+        [routerLink]="'/details/' + book.name"
+      >
         Details Book
       </button>
       <button mat-raised-button color="primary" routerLink="/chart">
