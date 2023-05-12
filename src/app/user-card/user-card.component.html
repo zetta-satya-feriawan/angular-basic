@@ -1,0 +1,11 @@
+<mat-card class="user-card">
+  <mat-card-title>{{ user.name }}</mat-card-title>
+  <mat-card-content>
+    <p>Age: {{ user.age }}</p>
+    <p>Gender: {{ user.gender }}</p>
+    <p>Position: {{ user.position }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="accent" (click)="editUser()">Edit</button>
+  </mat-card-actions>
+</mat-card>
