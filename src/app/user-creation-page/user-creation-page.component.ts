@@ -76,6 +76,8 @@ export class UserCreationPageComponent implements OnInit {
       this.userService.addUser(newUser);
     }
     this.router.navigate(['/']);
+    console.log(this.userForm.value);
+    
   }
 
   goBack() {
