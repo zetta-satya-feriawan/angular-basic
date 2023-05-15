@@ -23,7 +23,7 @@ export class UserCreationPageComponent implements OnInit {
     @Inject(ActivatedRoute) private route: ActivatedRoute
   ) {
     this.userForm = this.formBuilder.group({
-      id: [''],
+      id: [ Math.floor( Math.random()*(100 - 3) + 3)],
       name: ['', Validators.required],
       age: ['', Validators.required],
       gender: ['', Validators.required],
@@ -59,7 +59,6 @@ export class UserCreationPageComponent implements OnInit {
         this.userForm.patchValue(user);
       } else {
         console.log('user not found');
-        
       }
     }
   }
@@ -68,10 +67,8 @@ export class UserCreationPageComponent implements OnInit {
 
   onSubmit() {
     if (this.userForm.invalid) {
-      return;
-      
+      return ;
     }
-
     const newUser = this.userForm.value;
     if (this.isEditMode) {
       this.userService.updateUser(newUser);

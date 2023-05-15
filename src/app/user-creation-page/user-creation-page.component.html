@@ -1,11 +1,12 @@
-<h2>Create User</h2>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
-  <mat-form-field appearance="fill">
-    <!-- <mat-label>Name</mat-label> -->
-    <!-- <input matInput /> -->
-    <!-- <label for="name">name</label>
-    <input type="text" id="name" formControlName="name" /> -->
-    <mat-label for="name">name</mat-label>
+<form
+  [formGroup]="userForm"
+  (ngSubmit)="onSubmit()"
+  class="p-grid p-dir-column p-d-flex p-jc-center container"
+>
+  <h2 class="p-col-12">Create User</h2>
+
+  <mat-form-field appearance="fill" class="p-col-6">
+    <mat-label>Name</mat-label>
     <input
       matInput
       type="text"
@@ -15,54 +16,74 @@
     />
   </mat-form-field>
 
-  <mat-form-field>
-    <label for="age">Age:</label>
-    <input type="number" id="age" formControlName="age" />
+  <mat-form-field class="p-col-6">
+    <mat-label for="age">Age:</mat-label>
+    <input matInput type="number" id="age" formControlName="age" />
   </mat-form-field>
 
-  <mat-form-field>
-    <label for="gender">Gender:</label>
-    <input type="text" id="gender" formControlName="gender" />
-  </mat-form-field>
+  <mat-radio-group class="p-col-12" formControlName="gender">
+    <mat-label for="gender">Gender:</mat-label>
+    <!-- <input matInput type="text" id="gender"  /> -->
+    <mat-radio-button value="Male"> Male </mat-radio-button>
+    <mat-radio-button value="Female"> Female</mat-radio-button>
+    <mat-radio-button value="Other"> Other </mat-radio-button>
+  </mat-radio-group>
 
-  <div>
+  <mat-form-field class="p-col-6">
     <label for="position">Position:</label>
-    <input type="text" id="position" formControlName="position" />
-  </div>
+    <mat-select formControlName="position">
+      <mat-option value="FrontEnd">FrontEnd</mat-option>
+      <mat-option value="BackEnd">BackEnd</mat-option>
+      <mat-option value="QualityAssurance">QualityAssurance</mat-option>
+    </mat-select>
+    <!-- <input matInput type="text" id="position"  /> -->
+  </mat-form-field>
 
-  <div>
+  <mat-form-field class="p-col-6">
     <label for="email">Email:</label>
-    <input type="email" id="email" formControlName="email" />
-  </div>
+    <input matInput type="email" id="email" formControlName="email" />
+  </mat-form-field>
 
-  <div>
+  <mat-form-field class="p-col-6">
     <label for="maritalStatus">Marital Status:</label>
-    <input type="text" id="maritalStatus" formControlName="maritalStatus" />
-  </div>
+    <input
+      matInput
+      type="text"
+      id="maritalStatus"
+      formControlName="maritalStatus"
+    />
+  </mat-form-field>
 
   <div formGroupName="addresses">
-    <div>
-      <label for="address">Address:</label>
-      <input type="text" id="address" formControlName="address" />
-    </div>
+    <mat-form-field class="p-col-6">
+      <mat-label for="address">Address:</mat-label>
+      <input matInput type="text" id="address" formControlName="address" />
+    </mat-form-field>
 
-    <div>
-      <label for="zipCode">Zip Code:</label>
-      <input type="text" id="zipCode" formControlName="zipCode" />
-    </div>
+    <mat-form-field class="p-col-6">
+      <mat-label for="zipCode">Zip Code:</mat-label>
+      <input matInput type="text" id="zipCode" formControlName="zipCode" />
+    </mat-form-field>
 
-    <div>
-      <label for="city">City:</label>
-      <input type="text" id="city" formControlName="city" />
-    </div>
+    <mat-form-field class="p-col-6">
+      <mat-label for="city">City:</mat-label>
+      <input matInput type="text" id="city" formControlName="city" />
+    </mat-form-field>
 
-    <div>
-      <label for="country">Country:</label>
-      <input type="text" id="country" formControlName="country" />
-    </div>
+    <mat-form-field class="p-col-6">
+      <mat-label for="country">Country:</mat-label>
+      <input matInput type="text" id="country" formControlName="country" />
+    </mat-form-field>
   </div>
 
-  <button mat-raised-button color="primary" type="submit">Add User</button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="userForm.invalid"
+  >
+    Confirm
+  </button>
   <button mat-mini-fab color="primary" type="button" (click)="goBack()">
     Back
   </button>

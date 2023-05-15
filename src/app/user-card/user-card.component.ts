@@ -15,5 +15,7 @@ export class UserCardComponent {
 
   editUser() {
     this.router.navigate(['/create-user'], { queryParams: { userId: this.user.id } });
+    console.log(this.user.id);
+    
   }
 }
