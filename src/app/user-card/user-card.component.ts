@@ -1,5 +1,7 @@
+// user-card.component.ts
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../user-service.service';
 
 @Component({
   selector: 'app-user-card',
@@ -9,9 +11,9 @@ import { Router } from '@angular/router';
 export class UserCardComponent {
   @Input() user: any;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) {}
 
   editUser() {
-    this.router.navigate(['/user', this.user.id]);
+    this.router.navigate(['/create-user'], { queryParams: { userId: this.user.id } });
   }
 }
