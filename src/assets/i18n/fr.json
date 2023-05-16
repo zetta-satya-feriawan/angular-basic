@@ -1,0 +1,28 @@
+{
+  "userCreationPage": {
+    "title": "Création d'utilisateur",
+    "id": "Numéro ID",
+    "name": "Nom",
+    "age": "Âge",
+    "gender": "Genre",
+    "male": "Homme",
+    "female": "Femme",
+    "other" : "Autre",
+    "email": "Email",
+    "position": "Poste",
+    "manager": "Manager",
+    "developer": "Développeur",
+    "designer": "Designer",
+    "maritalStatus": "État civil",
+    "married": "Marié(e)",
+    "single": "Célibataire",
+    "addresses": "Adresses",
+    "address": "Adresse",
+    "zipCode": "Code Postal",
+    "city": "Ville",
+    "country": "Pays",
+    "backToList": "Retour à la liste des utilisateurs",
+    "save": "Enregistrer",
+    "qa":"Contrôle qualité"
+  }
+}

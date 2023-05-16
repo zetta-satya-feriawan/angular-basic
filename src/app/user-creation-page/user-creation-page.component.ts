@@ -4,6 +4,7 @@ import { UserService } from '../user-service.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -15,11 +16,14 @@ export class UserCreationPageComponent implements OnInit {
   userForm: FormGroup;
   isEditMode: boolean = false;
   userId: number | undefined;
+  currentLanguage: string = '';
+
 
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
+    private translateService: TranslateService,
     @Inject(ActivatedRoute) private route: ActivatedRoute
   ) {
     this.userForm = this.formBuilder.group({
@@ -82,5 +86,10 @@ export class UserCreationPageComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['/']);
+  }
+
+  toggleLanguage() {
+    this.currentLanguage = this.currentLanguage === 'en' ? 'fr' : 'en';
+    this.translateService.use(this.currentLanguage);
   }
 }

@@ -1,12 +1,15 @@
+<button mat-button (click)="toggleLanguage()">
+  {{ currentLanguage === "en" ? "EN" : "FR" }}
+</button>
 <form
   [formGroup]="userForm"
   (ngSubmit)="onSubmit()"
   class="p-grid p-dir-column p-d-flex p-jc-center container"
 >
-  <h2 class="p-col-12">Create User</h2>
+  <h2 class="p-col-12">{{ "userCreationPage.title" | translate }}</h2>
 
   <mat-form-field appearance="fill" class="p-col-6">
-    <mat-label>Name</mat-label>
+    <mat-label>{{ "userCreationPage.name" | translate }}</mat-label>
     <input
       matInput
       type="text"
@@ -17,61 +20,77 @@
   </mat-form-field>
 
   <mat-form-field class="p-col-6">
-    <mat-label for="age">Age:</mat-label>
+    <mat-label>{{ "userCreationPage.age" | translate }}</mat-label>
     <input matInput type="number" id="age" formControlName="age" />
   </mat-form-field>
 
   <mat-radio-group class="p-col-12" formControlName="gender">
-    <mat-label for="gender">Gender:</mat-label>
+    <mat-label>{{ "userCreationPage.gender" | translate }}</mat-label>
     <!-- <input matInput type="text" id="gender"  /> -->
-    <mat-radio-button value="Male"> Male </mat-radio-button>
-    <mat-radio-button value="Female"> Female</mat-radio-button>
-    <mat-radio-button value="Other"> Other </mat-radio-button>
+    <mat-radio-button value="Male">
+      {{ "userCreationPage.male" | translate }}
+    </mat-radio-button>
+    <mat-radio-button value="Female">
+      {{ "userCreationPage.female" | translate }}</mat-radio-button
+    >
+    <mat-radio-button value="Other">
+      {{ "userCreationPage.other" | translate }}
+    </mat-radio-button>
   </mat-radio-group>
 
   <mat-form-field class="p-col-6">
-    <label for="position">Position:</label>
+    <label for="position">{{ "userCreationPage.position" | translate }}</label>
     <mat-select formControlName="position">
       <mat-option value="FrontEnd">FrontEnd</mat-option>
       <mat-option value="BackEnd">BackEnd</mat-option>
-      <mat-option value="QualityAssurance">QualityAssurance</mat-option>
+      <mat-option value="QualityAssurance">{{
+        "userCreationPage.qa" | translate
+      }}</mat-option>
     </mat-select>
     <!-- <input matInput type="text" id="position"  /> -->
   </mat-form-field>
 
   <mat-form-field class="p-col-6">
-    <label for="email">Email:</label>
+    <label>{{ "userCreationPage.email" | translate }}</label>
     <input matInput type="email" id="email" formControlName="email" />
   </mat-form-field>
 
   <mat-form-field class="p-col-6">
-    <label for="maritalStatus">Marital Status:</label>
-    <input
-      matInput
-      type="text"
-      id="maritalStatus"
-      formControlName="maritalStatus"
-    />
+    <label for="maritalStatus">{{
+      "userCreationPage.maritalStatus" | translate
+    }}</label>
+    <mat-select id="maritalStatus" formControlName="maritalStatus">
+      <mat-option value="Married">
+        {{ "userCreationPage.married" | translate }}
+      </mat-option>
+      <mat-option value="Single">
+        {{ "userCreationPage.single" | translate }}
+      </mat-option>
+    </mat-select>
   </mat-form-field>
 
   <div formGroupName="addresses">
     <mat-form-field class="p-col-6">
-      <mat-label for="address">Address:</mat-label>
+      <mat-label>{{ "userCreationPage.addresses" | translate }}</mat-label>
       <input matInput type="text" id="address" formControlName="address" />
     </mat-form-field>
 
     <mat-form-field class="p-col-6">
-      <mat-label for="zipCode">Zip Code:</mat-label>
+      <mat-label for="zipCode">{{
+        "userCreationPage.zipCode" | translate
+      }}</mat-label>
       <input matInput type="text" id="zipCode" formControlName="zipCode" />
     </mat-form-field>
 
     <mat-form-field class="p-col-6">
-      <mat-label for="city">City:</mat-label>
+      <mat-label for="city">{{
+        "userCreationPage.city" | translate
+      }}</mat-label>
       <input matInput type="text" id="city" formControlName="city" />
     </mat-form-field>
 
     <mat-form-field class="p-col-6">
-      <mat-label for="country">Country:</mat-label>
+      <mat-label>{{ "userCreationPage.country" | translate }}</mat-label>
       <input matInput type="text" id="country" formControlName="country" />
     </mat-form-field>
   </div>
@@ -82,7 +101,7 @@
     type="submit"
     [disabled]="userForm.invalid"
   >
-    Confirm
+    {{ "userCreationPage.save" | translate }}
   </button>
   <button mat-mini-fab color="primary" type="button" (click)="goBack()">
     Back
