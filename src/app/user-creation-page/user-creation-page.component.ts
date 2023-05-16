@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../user-service.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -34,13 +34,30 @@ export class UserCreationPageComponent implements OnInit {
       position: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       maritalStatus: ['', Validators.required],
-      addresses: this.formBuilder.group({
-        address: ['', Validators.required],
-        zipCode: ['', Validators.required],
-        city: ['', Validators.required],
-        country: ['', Validators.required]
-      })
+      addresses: this.formBuilder.array([this.createAddressFormGroup()])
+  })}
+
+  createAddressFormGroup(): FormGroup {
+    return this.formBuilder.group({
+      address: ['', Validators.required],
+      zipCode: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required]
     });
+  }
+
+  get addresses():FormArray{
+    return this.userForm.get('addresses') as FormArray;
+  }
+
+  addAddress(){
+    this.addresses.push(this.createAddressFormGroup())
+    console.log(this.userForm.get('addresses'));
+    
+  }
+
+  removeAddress(index: number): void {
+    this.addresses.removeAt(index);
   }
 
   ngOnInit() {
@@ -51,8 +68,11 @@ export class UserCreationPageComponent implements OnInit {
         this.loadUserData();
       }
     });
+    console.log('test', this.userForm.get('addresses'));
+    
   }
-  
+
+
 
   loadUserData() {
     if (this.route.snapshot.queryParams['userId']) {
@@ -81,7 +101,6 @@ export class UserCreationPageComponent implements OnInit {
     }
     this.router.navigate(['/']);
     console.log(this.userForm.value);
-    
   }
 
   goBack() {

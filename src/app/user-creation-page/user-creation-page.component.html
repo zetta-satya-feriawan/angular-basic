@@ -69,31 +69,50 @@
     </mat-select>
   </mat-form-field>
 
-  <div formGroupName="addresses">
-    <mat-form-field class="p-col-6">
-      <mat-label>{{ "userCreationPage.addresses" | translate }}</mat-label>
-      <input matInput type="text" id="address" formControlName="address" />
-    </mat-form-field>
+  <div formArrayName="addresses">
+    <div
+      *ngFor="let address of addresses.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <div>Address</div>
+      <div>
+        <mat-form-field class="p-col-6">
+          <mat-label>{{ "userCreationPage.addresses" | translate }}</mat-label>
+          <input matInput type="text" id="address" formControlName="address" />
+        </mat-form-field>
 
-    <mat-form-field class="p-col-6">
-      <mat-label for="zipCode">{{
-        "userCreationPage.zipCode" | translate
-      }}</mat-label>
-      <input matInput type="text" id="zipCode" formControlName="zipCode" />
-    </mat-form-field>
+        <mat-form-field class="p-col-6">
+          <mat-label for="zipCode">{{
+            "userCreationPage.zipCode" | translate
+          }}</mat-label>
+          <input
+            matInput
+            type="number"
+            id="zipCode"
+            formControlName="zipCode"
+          />
+        </mat-form-field>
 
-    <mat-form-field class="p-col-6">
-      <mat-label for="city">{{
-        "userCreationPage.city" | translate
-      }}</mat-label>
-      <input matInput type="text" id="city" formControlName="city" />
-    </mat-form-field>
+        <mat-form-field class="p-col-6">
+          <mat-label for="city">{{
+            "userCreationPage.city" | translate
+          }}</mat-label>
+          <input matInput type="text" id="city" formControlName="city" />
+        </mat-form-field>
 
-    <mat-form-field class="p-col-6">
-      <mat-label>{{ "userCreationPage.country" | translate }}</mat-label>
-      <input matInput type="text" id="country" formControlName="country" />
-    </mat-form-field>
+        <mat-form-field class="p-col-6">
+          <mat-label>{{ "userCreationPage.country" | translate }}</mat-label>
+          <input matInput type="text" id="country" formControlName="country" />
+        </mat-form-field>
+
+        <button mat-mini-fab color="primary" (click)="removeAddress(i)">
+          --
+        </button>
+      </div>
+    </div>
   </div>
+
+  <button mat-mini-fab color="primary" (click)="addAddress()">Add</button>
 
   <button
     mat-raised-button
