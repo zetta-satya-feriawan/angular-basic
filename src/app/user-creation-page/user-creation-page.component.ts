@@ -80,13 +80,12 @@ export class UserCreationPageComponent implements OnInit {
       this.userId = parseInt(this.route.snapshot.queryParams['userId'], 10);
       const user = this.userService.getUserById(this.userId);
       if (user) {
-        this.userForm.patchValue(user);
-        const addresses = this.userForm.get('addresses') as FormArray;
-        addresses.clear();
+        this.userForm.patchValue(user); // bukan form array
+        this.addresses.clear();
         user.addresses.forEach((address: any) => {
           const addressFormGroup = this.createAddressFormGroup();
           addressFormGroup.setValue(address);
-          addresses.push(addressFormGroup);
+          this.addresses.push(addressFormGroup);
         });
         console.log('waktu submit',user, this.addresses.controls)
       } else {
