@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import  Swal   from "sweetalert2";
 
 
 @Component({
@@ -28,18 +29,27 @@ export class UserCreationPageComponent implements OnInit {
   ) {
     this.userForm = this.formBuilder.group({
       id: [ Math.floor( Math.random()*(100 - 3) + 3)],
-      name: ['', Validators.required],
-      age: ['', Validators.required],
+      name: ['', [Validators.required,Validators.pattern(/^[A-Za-z ]+$/)]],
+      age: ['', [Validators.required, Validators.min(10), Validators.pattern(/^[0-9]+$/)]],
       gender: ['', Validators.required],
       position: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       maritalStatus: ['', Validators.required],
       addresses: this.formBuilder.array([this.createAddressFormGroup()])
-  })}
+  })
+  this.userForm.get('name')?.valueChanges.subscribe((value) => {
+    if (this.isEditMode) {
+      if (/\d/.test(value) || !/^[A-Za-z\s]+$/.test(value)) {
+        const sanitizedValue = value.replace(/[\d\W]/g, '');
+        this.userForm.get('name')?.patchValue(sanitizedValue, { emitEvent: false });
+      }
+    }
+  });
+}
 
   createAddressFormGroup(): FormGroup {
     return this.formBuilder.group({
-      address: ['', Validators.required],
+      address: ['', Validators.required], 
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
       country: ['', Validators.required]
@@ -94,20 +104,22 @@ export class UserCreationPageComponent implements OnInit {
     }
   }
   
-  
-
   onSubmit() {
     if (this.userForm.invalid) {
+      Swal.fire('Error', 'pelase fill form correctly', 'error');
       return ;
     }
-    const newUser = this.userForm.value;
+    const newUser = this.userForm.getRawValue();
     if (this.isEditMode) {
       this.userService.updateUser(newUser);
     } else {
       this.userService.addUser(newUser);
     }
-    this.router.navigate(['/']);
-    console.log(this.userForm.value);
+
+    Swal.fire('Success' , 'Saved' , 'success').then(()=>{
+      this.router.navigate(['/'])
+      console.log(this.userForm.value);
+    })
   }
 
   goBack() {
