@@ -17,11 +17,39 @@
       formControlName="name"
       placeholder="your name"
     />
+    <div
+      *ngIf="
+        userForm.get('name')?.invalid &&
+        (userForm.get('name')?.dirty || userForm.get('name')?.touched)
+      "
+      class="alert"
+    >
+      <div *ngIf="userForm.get('name')?.errors?.['required']">
+        Name is required.
+      </div>
+      <div *ngIf="userForm.get('name')?.errors?.['pattern']">
+        please input string only
+      </div>
+    </div>
   </mat-form-field>
 
   <mat-form-field class="p-col-6">
     <mat-label>{{ "userCreationPage.age" | translate }}</mat-label>
     <input matInput type="number" id="age" formControlName="age" />
+    <div
+      *ngIf="
+        userForm.get('age')?.invalid &&
+        (userForm.get('age')?.dirty || userForm.get('age')?.touched)
+      "
+    >
+      <div *ngIf="userForm.get('age')?.errors?.['required']">
+        Age is required.
+      </div>
+      <div *ngIf="userForm.get('age')?.errors?.['min']">minimum age is 10</div>
+      <div *ngIf="userForm.get('age')?.errors?.['pattern']">
+        pelase just input number
+      </div>
+    </div>
   </mat-form-field>
 
   <mat-radio-group class="p-col-12" formControlName="gender">
