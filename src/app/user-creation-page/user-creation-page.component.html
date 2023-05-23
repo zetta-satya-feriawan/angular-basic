@@ -81,6 +81,19 @@
   <mat-form-field class="p-col-6">
     <label>{{ "userCreationPage.email" | translate }}</label>
     <input matInput type="email" id="email" formControlName="email" />
+    <div
+      *ngIf="
+        userForm.get('email')?.invalid &&
+        (userForm.get('email')?.dirty || userForm.get('email?.touched'))
+      "
+    >
+      <div *ngIf="userForm.get('email')?.errors?.['required']">
+        Email Field is Required
+      </div>
+      <div *ngIf="userForm.get('email')?.errors?.['email']">
+        Please input email format correctly
+      </div>
+    </div>
   </mat-form-field>
 
   <mat-form-field class="p-col-6">
