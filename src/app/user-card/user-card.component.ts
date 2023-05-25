@@ -13,7 +13,7 @@ import { CombineWordsPipe } from '../combine-words.pipe'
 export class UserCardComponent {
   @Input() user: any;
 
-  constructor(private router: Router, private userService: UserService,private removeAccentsPipe: RemoveAccentsPipe, private combineWordsPipe : CombineWordsPipe) {}
+  constructor(private router: Router, private userService: UserService) {}
 
   editUser() {
     this.router.navigate(['/create-user'], { queryParams: { userId: this.user.id } });

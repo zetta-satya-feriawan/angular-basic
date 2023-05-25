@@ -1,7 +1,9 @@
+<input type="text" [(ngModel)]="searchQuery" placeholder="Search..." />
+
 <h2>User List</h2>
 
 <div class="p-grid max">
-  <div *ngFor="let user of users" class="p-col-4">
+  <div *ngFor="let user of users | filter : searchQuery" class="p-col-4">
     <app-user-card [user]="user"></app-user-card>
   </div>
 </div>

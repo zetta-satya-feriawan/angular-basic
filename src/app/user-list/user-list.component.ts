@@ -5,21 +5,19 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  styleUrls: ['./user-list.component.css'],
 })
 export class UserListComponent implements OnInit {
   users: any[] = [];
+  searchQuery: string = '';
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.users = this.userService.getUsers();
-    // this.userService.addUserEvent.subscribe(newUser => {
-    //   this.users.push(newUser); 
-    // });
   }
 
-  addUser() {
+  addUser(): void {
     this.router.navigate(['/create-user']);
   }
 }

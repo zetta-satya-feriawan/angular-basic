@@ -17,6 +17,9 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateService } from '@ngx-translate/core';
+import { RemoveAccentsPipe } from './remove-accents.pipe';
+import { CombineWordsPipe } from './combine-words.pipe';
+import { FilterPipe } from './user-filter.pipe';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -29,7 +32,10 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     UserListComponent,
     UserCardComponent,
-    UserCreationPageComponent
+    UserCreationPageComponent,
+    RemoveAccentsPipe,
+    CombineWordsPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
