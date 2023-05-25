@@ -8,7 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -23,7 +25,10 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     FormsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatGridListModule,
+    MatPaginatorModule,
+    MatTableModule
 
   ],
   providers: [],
