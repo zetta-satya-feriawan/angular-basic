@@ -9,9 +9,14 @@ import { Observable } from 'rxjs';
   styleUrls: ['./post-list.component.css']
 })
 export class PostListComponent implements OnInit {
-posts : any[] = []
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+posts : any[]=[]
+// dataSource: MatTableDataSource<any> = new MatTableDataSource<any>(this.posts);
+dataSource!: MatTableDataSource<any[]>;
+constructor(private postService : PostService){
+  this.dataSource = new MatTableDataSource<any>(this.posts);
+}
 
-constructor(private postService : PostService){}
 ngOnInit(): void {
     this.fetchPosts()
 }
@@ -19,6 +24,17 @@ ngOnInit(): void {
 fetchPosts():void{
   this.postService.posts$.subscribe(posts => {
     this.posts = posts;
+    // this.dataSource = new MatTableDataSource<any>(this.posts);
+
+    this.dataSource.data = this.posts;
+    this.dataSource.paginator = this.paginator;
+    this.paginator.pageIndex = 0; 
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.data = this.posts; 
+    // this.dataSource.paginator!.length = this.posts.length; 
+    // this.dataSource.connect()
+    // this.dataSource = new MatTableDataSource<any[]>(this.posts);
+    // this.dataSource.paginator = this.paginator;
     console.log(posts)
   });
 }

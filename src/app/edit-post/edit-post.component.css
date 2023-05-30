@@ -1,0 +1,9 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: 0 200px 0 200px ;
+}
+
+.card-title{
+  text-align: center;
+}

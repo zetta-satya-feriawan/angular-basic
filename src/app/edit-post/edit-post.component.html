@@ -1,30 +1,29 @@
 <div class="card">
   <div class="card-body">
     <h5 class="card-title">Edit Post</h5>
-    <form (ngSubmit)="updatePost()">
-      <div class="form-group">
-        <label for="editTitle">Title</label>
-        <input
-          type="text"
-          class="form-control"
-          id="editTitle"
-          [(ngModel)]="title"
-          name="title"
-          placeholder="Enter title"
-        />
-      </div>
-      <div class="form-group">
-        <label for="editBody">Body</label>
+    <form (ngSubmit)="updatePost()" class="container">
+      <mat-form-field>
+        <mat-label for="editTitle">Title</mat-label>
+        <input matInput type="text" [(ngModel)]="title" name="title" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="editBody">Body</mat-label>
         <textarea
-          class="form-control"
-          id="editBody"
+          matInput
           [(ngModel)]="body"
           name="body"
           rows="3"
           placeholder="Enter body"
         ></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary">Update</button>
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        class="btn btn-primary"
+      >
+        Update
+      </button>
     </form>
   </div>
 </div>

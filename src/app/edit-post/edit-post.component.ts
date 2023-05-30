@@ -19,7 +19,7 @@ export class EditPostComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const postIdParam = params.get('id');
-      console.log('test',postIdParam);
+      console.log('id of post',postIdParam);
         if (postIdParam?.includes('dummy')) {
         this.postService.posts$.subscribe((resp) => {
           const selectedPost = resp.find((data) => data?.id === postIdParam)
