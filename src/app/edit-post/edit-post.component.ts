@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import  Swal   from "sweetalert2";
 // import { Inject } from '@angular/core';
 
 @Component({
@@ -42,6 +43,11 @@ export class EditPostComponent {
     if (this.postId !== null) {
       const updatedPost = { id: this.postId, title: this.title, body: this.body };
       this.postService.updatePost(updatedPost);
+      Swal.fire(
+        'Success',
+        'your post published',
+        'success'
+      )
       this.router.navigate(['/'])
     }
   }

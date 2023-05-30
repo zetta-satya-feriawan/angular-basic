@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PostService } from '../services/post.service';
 import { Router } from '@angular/router';
+import  Swal   from "sweetalert2";
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
@@ -19,6 +20,11 @@ export class CreatePostComponent {
     this.postService.createPost(post);
 
     console.log(post);
+    Swal.fire(
+      'Success',
+      'your post published',
+      'success'
+    )
     this.router.navigate(['/'])
   }
   
