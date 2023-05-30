@@ -20,13 +20,7 @@ export class EditPostComponent {
     this.route.paramMap.subscribe(params => {
       const postIdParam = params.get('id');
       console.log('test',postIdParam);
-      if (postIdParam && !postIdParam.includes('dummy')) {
-        this.postId = +postIdParam;
-        this.postService.getPost(this.postId).subscribe(post => {
-          this.title = post.title;
-          this.body = post.body;
-        });
-      } else if (postIdParam?.includes('dummy')) {
+        if (postIdParam?.includes('dummy')) {
         this.postService.posts$.subscribe((resp) => {
           const selectedPost = resp.find((data) => data?.id === postIdParam)
           if(selectedPost) {
@@ -35,7 +29,13 @@ export class EditPostComponent {
             this.body = selectedPost.body
           }
         })
-      }
+      } else if (postIdParam) {
+        this.postId = +postIdParam;
+        this.postService.getPost(this.postId).subscribe(post => {
+          this.title = post.title;
+          this.body = post.body;
+        });
+      } 
     });
   }
   updatePost(): void {

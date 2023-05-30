@@ -14,19 +14,19 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   getPosts(): void {
-    this.http.get<any[]>('https://jsonplaceholder.typicode.com/posts').subscribe(posts => {
+    this.http.get<any[]>(this.apiUrl).subscribe(posts => {
       this.posts = posts;
       this.postsSource.next(this.posts);
     });
   }
 
   getPost(postId: number): Observable<any> {
-    return this.http.get<any>(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    return this.http.get<any>(`${this.apiUrl}/${postId}`);
   }
 
   createPost(post: any): void {
     if(!post.id.includes('dummy')) {
-      this.http.post<any>('https://jsonplaceholder.typicode.com/posts', post).subscribe(createdPost => {
+      this.http.post<any>(this.apiUrl, post).subscribe(createdPost => {
         this.posts.push(createdPost);
         this.postsSource.next(this.posts);
       });
@@ -40,8 +40,8 @@ export class PostService {
   updatePost(post: any): void {
     const index = this.posts.findIndex(p => p.id === post.id);
     console.log('testt', post)
-    if(!post.id.includes('dummy')) {
-      this.http.put<any>(`https://jsonplaceholder.typicode.com/posts/${post.id}`, post).subscribe(updatedPost => {
+    if(post.postId && !post.postId.includes('dummy')) {
+      this.http.put<any>(`${this.apiUrl}/${post.id}`, post).subscribe(updatedPost => {
         if (index !== -1) {
           this.posts[index] = updatedPost;
           this.postsSource.next(this.posts);
