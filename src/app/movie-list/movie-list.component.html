@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav class="sidenav">
+    <ul>
+      <li><a href="">Create</a></li>
+      <li><a href="">About</a></li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button (click)="toggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>My App</span>
+    </mat-toolbar>
+    <div class="container">
+      <div *ngIf="error">
+        <p>ERROR : {{ error }}</p>
+      </div>
+      <div class="cards-container" *ngIf="movies">
+        <div class="card" *ngFor="let movie of movies">
+          <mat-card>
+            <mat-card-title>{{ movie.title }}</mat-card-title>
+            <mat-card-subtitle>{{ movie.releaseDate }}</mat-card-subtitle>
+            <mat-card-actions>
+              <button mat-button>Details</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
