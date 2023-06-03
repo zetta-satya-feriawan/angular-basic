@@ -1,0 +1,55 @@
+<div class="filter-container">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input
+      matInput
+      [(ngModel)]="filterValue"
+      (input)="applyFilter()"
+      placeholder="Search"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select [(ngModel)]="statusFilter" (selectionChange)="applyFilter()">
+      <mat-option *ngFor="let status of statusOptions" [value]="status">{{
+        status
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="filteredMentors" class="mat-elevation-z8">
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>No</th>
+    <td mat-cell *matCellDef="let mentor; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Name</th>
+    <td mat-cell *matCellDef="let mentor">
+      {{ mentor.civility }} {{ mentor.last_name }} {{ mentor.first_name }}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Email</th>
+    <td mat-cell *matCellDef="let mentor">{{ mentor.email }}</td>
+  </ng-container>
+  <ng-container matColumnDef="userType">
+    <th mat-header-cell *matHeaderCellDef>User Type</th>
+    <td mat-cell *matCellDef="let mentor">{{ mentor.company.user_type }}</td>
+  </ng-container>
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>status</th>
+    <td mat-cell *matCellDef="let mentor">
+      <mat-icon *ngIf="mentor.user_status === 'active'" style="color: green"
+        >check</mat-icon
+      >
+      <mat-icon *ngIf="mentor.user_status === 'pending'" style="color: red"
+        >close</mat-icon
+      >
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let mentor; columns: displayedColumns"></tr>
+</table>
