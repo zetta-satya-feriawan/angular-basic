@@ -1,0 +1,58 @@
+<button mat-button (click)="toggleLanguage()">
+  {{ currentLanguage === "en" ? "EN" : "FR" }}
+</button>
+
+<form [formGroup]="userForm" (ngSubmit)="addUser()" class="container">
+  <div class="form-row">
+    <mat-radio-group formControlName="civility" id="civility">
+      <mat-label>{{ "createUser.civility" | translate }}</mat-label>
+      <mat-radio-button value="Mr">{{
+        "createUser.mr" | translate
+      }}</mat-radio-button>
+      <mat-radio-button value="Mrs">{{
+        "createUser.mrs" | translate
+      }}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field>
+      <mat-label>{{ "createUser.lastName" | translate }}</mat-label>
+      <input matInput formControlName="lastName" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field>
+      <mat-label>{{ "createUser.firstName" | translate }}</mat-label>
+      <input matInput formControlName="firstName" />
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field>
+      <mat-label>{{ "createUser.dateOfBirth" | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-label>{{ "createUser.gender" | translate }}</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option class="gender" value="Male">{{
+        "createUser.male" | translate
+      }}</mat-option>
+      <mat-option class="gender" value="Female">{{
+        "createUser.female" | translate
+      }}</mat-option>
+    </mat-select>
+  </div>
+
+  <div class="form-row">
+    <button mat-raised-button color="primary" type="submit">
+      {{ "createUser.addUser" | translate }}
+    </button>
+  </div>
+</form>

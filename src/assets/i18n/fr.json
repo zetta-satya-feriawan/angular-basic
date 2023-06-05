@@ -1,0 +1,18 @@
+{
+  "createUser":{
+    
+    "male": "Homme",
+    "female": "Femme",
+    "userList": "Liste des utilisateurs",
+    "createUser": "Créer un utilisateur",
+    "name": "Nom",
+    "dateOfBirth": "Date de naissance",
+    "gender": "Genre",
+    "civility": "Civilité",
+    "mr": "M.",
+    "mrs": "Mme",
+    "firstName": "Prénom",
+    "lastName": "Nom de famille",
+    "addUser": "Ajouter un utilisateur"
+  }
+}

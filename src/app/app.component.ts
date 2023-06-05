@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-basic';
+  @ViewChild('sidenav') sidenav!: MatSidenav;
+  reason = '';
+
+
+  openSidenav(): void {
+    if (!this.sidenav.opened) {
+      this.sidenav.open();
+    }
+  }
+
+  close(reason: string): void {
+    this.reason = reason;
+    if (this.sidenav.opened) {
+      this.sidenav.close();
+    }
+  }
+
+  onBackdropClick(): void {
+    this.close('Backdrop clicked');
+  }
+
+  onEscapeKeyDown(): void {
+    this.close('Escape key pressed');
+  }
 }

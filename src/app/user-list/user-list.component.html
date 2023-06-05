@@ -1,0 +1,39 @@
+<button mat-button (click)="toggleLanguage()">
+  {{ currentLanguage === "en" ? "EN" : "FR" }}
+</button>
+<h1 style="text-align: center">{{ "createUser.userList" | translate }}</h1>
+<button mat-button routerLink="/create-user">
+  {{ "createUser.createUser" | translate }}
+</button>
+<mat-table [dataSource]="users">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>{{
+      "createUser.name" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let user"
+      >{{ user.civility }} {{ user.lastName }} {{ user.firstName }}</mat-cell
+    >
+  </ng-container>
+
+  <ng-container matColumnDef="number">
+    <th mat-header-cell *matHeaderCellDef>No</th>
+    <td mat-cell *matCellDef="let user; let i = index">{{ i + 1 }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="dateOfBirth">
+    <mat-header-cell *matHeaderCellDef>{{
+      "createUser.dateOfBirth" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.dateOfBirth | date }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <mat-header-cell *matHeaderCellDef>{{
+      "createUser.gender" | translate
+    }}</mat-header-cell>
+    <mat-cell *matCellDef="let user">{{ user.gender }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
