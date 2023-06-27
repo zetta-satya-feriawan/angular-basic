@@ -1,0 +1,38 @@
+<div class="container">
+  <h2 class="playlist-heading">Playlist List</h2>
+  <ul class="playlist-list">
+    <li
+      *ngFor="let playlist of playlists; let playlistIndex = index"
+      class="playlist-item"
+    >
+      <h3>{{ playlist.name }}</h3>
+      <p>Total Songs: {{ playlist.totalSongs }} songs</p>
+      <p>Total Duration: {{ playlist.totalDuration }} minutes</p>
+      <p>Description: {{ playlist.description }}</p>
+      <button class="toggle-button" (click)="toggleSongs(playlistIndex)">
+        {{ showSongs[playlistIndex] ? "Hide Songs" : "Show Songs" }}
+      </button>
+      <ul class="song-list" *ngIf="showSongs[playlistIndex]">
+        <li
+          *ngFor="let song of playlist.songs; let songIndex = index"
+          class="song-item"
+        >
+          <p>Title: {{ song.title }}</p>
+          <p>Artist: {{ song.artist }}</p>
+          <p>Duration: {{ song.duration }}</p>
+          <button
+            class="delete-button"
+            (click)="deleteSong(playlistIndex, songIndex)"
+          >
+            Delete
+          </button>
+        </li>
+      </ul>
+      <button class="delete-button" (click)="deletePlaylist(playlistIndex)">
+        Delete Playlist
+      </button>
+      <a [routerLink]="['/playlists/edit', playlist.name]">Edit Playlist</a>
+    </li>
+  </ul>
+  <a routerLink="/playlists/create">Create Playlist</a>
+</div>

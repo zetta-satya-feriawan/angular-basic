@@ -1,0 +1,17 @@
+<h2>{{ mode === "create" ? "Create Song" : "Edit Song" }}</h2>
+
+<form [formGroup]="songForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Title:</label>
+    <input type="text" id="title" formControlName="title" required />
+  </div>
+  <div>
+    <label for="artist">Artist:</label>
+    <input type="text" id="artist" formControlName="artist" required />
+  </div>
+  <div>
+    <label for="duration">Duration:</label>
+    <input type="number" id="duration" formControlName="duration" required />
+  </div>
+  <button type="submit">{{ mode === "create" ? "Create" : "Update" }}</button>
+</form>

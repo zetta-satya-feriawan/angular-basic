@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Song List</h2>
+  <ul class="song-list">
+    <li *ngFor="let song of songs; let i = index" class="song-item">
+      {{ song.title }} - {{ song.artist }} ({{ song.duration }} minutes)
+      <button class="delete-button" (click)="deleteSong(i)">Delete</button>
+      <button class="edit-button" (click)="editSong(i)">Edit</button>
+
+      <select
+        class="playlist-select"
+        (change)="addSongToPlaylist(playlistSelect.value, song)"
+        #playlistSelect
+      >
+        <option value="">Add to Playlist</option>
+        <option
+          *ngFor="let playlist of playlists; let j = index"
+          [value]="j"
+          class="playlist-option"
+        >
+          {{ playlist.name }}
+        </option>
+      </select>
+    </li>
+  </ul>
+  <a routerLink="/songs/create">Create Song</a>
+</div>

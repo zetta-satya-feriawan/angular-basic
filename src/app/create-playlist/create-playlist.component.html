@@ -1,0 +1,29 @@
+<h2>{{ mode === "create" ? "Create Playlist" : "Update Playlist" }}</h2>
+
+<form [formGroup]="playlistForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    <div
+      *ngIf="playlistForm.controls['name'].touched && playlistForm.controls['name'].errors?.['required']"
+      class="error"
+    >
+      Name is required
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <div
+      *ngIf="playlistForm.controls['description'].touched && playlistForm.controls['description'].errors?.['required']"
+      class="error"
+    >
+      Description is required
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="playlistForm.invalid">
+    {{ mode === "create" ? "Create Playlist" : "Update Playlist" }}
+  </button>
+</form>
