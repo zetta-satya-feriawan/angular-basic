@@ -1,0 +1,44 @@
+<div class="container">
+  <div id="added-to-cart-list">
+    <h3>Added to cart:</h3>
+    <mat-card id="added-items" *ngFor="let addedItem of addedToCartItems">
+      <mat-card-content class="chat-item">
+        <span>{{ addedItem.name }} - ${{ addedItem.price }}</span>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="addToCart(addedItem)"
+        >
+          Delete
+        </button>
+      </mat-card-content>
+    </mat-card>
+    <p id="total-price">Total Price: ${{ getTotalPrice() }}</p>
+    <button mat-raised-button color="primary" (click)="buy()">Buy</button>
+  </div>
+
+  <br />
+  <br />
+  <br />
+
+  <div class="row">
+    <div *ngFor="let item of items" class="item">
+      <mat-card>
+        <img [src]="item.image" class="item-image" />
+        <mat-card-content class="item-desc">
+          <h3>{{ item.name }}</h3>
+          <p>Price: ${{ item.price }}</p>
+          <p>{{ item.desc }}</p>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="addToCart(item)"
+            class="add-to-cart-button"
+          >
+            {{ item.addedToCart ? "Added to cart!" : "Add to cart" }}
+          </button>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

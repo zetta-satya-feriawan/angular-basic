@@ -1,0 +1,31 @@
+.container {
+  margin: 50px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.item {
+  flex-basis: calc(50% - 10px);
+  margin-bottom: 20px;
+}
+
+.item-image {
+  width: 100%;
+}
+
+.item-desc {
+  padding: 16px;
+}
+
+mat-card {
+  width: 100%;
+}
+
+.chat-item{
+  display: flex;
+  justify-content: space-between;
+}
