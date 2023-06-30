@@ -7,8 +7,15 @@ import { SongListComponent } from "./song-list/song-list.component"
 import { PlaylistListComponent } from "./playlist-list/playlist-list.component"
 import { CreatePlaylistComponent } from "./create-playlist/create-playlist.component"
 import { CreateSongComponent } from "./create-song/create-song.component"
+import { MatInputModule } from "@angular/material/input"
+import { MatFormFieldModule } from "@angular/material/form-field"
+import { MatButtonModule } from "@angular/material/button"
+import { MatListModule } from "@angular/material/list"
+import { MatIconModule } from "@angular/material/icon"
+import { MatSelectModule } from "@angular/material/select"
 
-import { FormsModule, ReactiveFormsModule } from "@angular/forms"
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
@@ -18,7 +25,19 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms"
     CreatePlaylistComponent,
     CreateSongComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatListModule,
+    MatIconModule,
+    MatSelectModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,26 +1,35 @@
 <div class="container">
   <h2>Song List</h2>
-  <ul class="song-list">
-    <li *ngFor="let song of songs; let i = index" class="song-item">
-      {{ song.title }} - {{ song.artist }} ({{ song.duration }} minutes)
-      <button class="delete-button" (click)="deleteSong(i)">Delete</button>
-      <button class="edit-button" (click)="editSong(i)">Edit</button>
-
-      <select
-        class="playlist-select"
-        (change)="addSongToPlaylist(playlistSelect.value, song)"
-        #playlistSelect
-      >
-        <option value="">Add to Playlist</option>
-        <option
-          *ngFor="let playlist of playlists; let j = index"
-          [value]="j"
-          class="playlist-option"
-        >
-          {{ playlist.name }}
-        </option>
-      </select>
-    </li>
-  </ul>
-  <a routerLink="/songs/create">Create Song</a>
+  <mat-list class="song-list">
+    <mat-list-item *ngFor="let song of songs; let i = index" class="song-item">
+      <div class="container-song-item">
+        {{ song.title }} - {{ song.artist }} ({{ song.duration }} minutes)
+        <div class="button-container">
+          <button mat-icon-button class="delete-button" (click)="deleteSong(i)">
+            <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button class="edit-button" (click)="editSong(i)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+        <mat-form-field class="playlist-select">
+          <mat-label>Add to Playlist</mat-label>
+          <mat-select
+            (selectionChange)="addSongToPlaylist($event.value, song)"
+            #playlistSelect
+          >
+            <mat-option value="">None</mat-option>
+            <mat-option
+              *ngFor="let playlist of playlists; let j = index"
+              [value]="j"
+              class="playlist-option"
+            >
+              {{ playlist.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-list-item>
+  </mat-list>
+  <a mat-button routerLink="/songs/create">Create Song</a>
 </div>

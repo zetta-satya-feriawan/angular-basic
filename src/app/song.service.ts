@@ -28,7 +28,7 @@ export class SongService {
         duration: 4,
       },
       {
-        title: "Darkside",
+        title: "Darks",
         artist: "Alan Walker",
         duration: 5,
       },

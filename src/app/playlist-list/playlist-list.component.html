@@ -21,6 +21,7 @@
           <p>Artist: {{ song.artist }}</p>
           <p>Duration: {{ song.duration }}</p>
           <button
+            mat-button
             class="delete-button"
             (click)="deleteSong(playlistIndex, songIndex)"
           >
@@ -28,7 +29,11 @@
           </button>
         </li>
       </ul>
-      <button class="delete-button" (click)="deletePlaylist(playlistIndex)">
+      <button
+        mat-button
+        class="delete-button"
+        (click)="deletePlaylist(playlistIndex)"
+      >
         Delete Playlist
       </button>
       <a [routerLink]="['/playlists/edit', playlist.name]">Edit Playlist</a>

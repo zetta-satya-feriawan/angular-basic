@@ -1,24 +1,12 @@
-
 .container {
   display: flex;
+  justify-content: space-between;
 }
-
 
 .song-list-container {
-  flex: 1;
-  padding: 20px;
+  flex-basis: 50%;
 }
-
 
 .playlist-list-container {
-  flex: 1;
-  padding: 20px;
-}
-
-
-@media (max-width: 768px) {
-  .song-list-container,
-  .playlist-list-container {
-    flex: 0 0 100%;
-  }
+  flex-basis: 50%;
 }
