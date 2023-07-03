@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+margin: 20px;
+padding: 20px;
+border: 1px solid black;
+display: flex;
+}
+
+.button{
+  display: flex;
+  justify-content: end;
+}

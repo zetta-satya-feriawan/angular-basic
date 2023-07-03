@@ -1,0 +1,48 @@
+<app-navbar-tutorial-page></app-navbar-tutorial-page>
+<div class="button">
+  <button mat-raised-button color="primary" (click)="createTutorialForm()">
+    Add Tutorial
+  </button>
+  <button mat-raised-button color="primary" (click)="reset()">Reset</button>
+</div>
+<div class="container">
+  <div class="table-container">
+    <mat-table [dataSource]="tutorials">
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef>Title of tutorial</th>
+        <td mat-cell *matCellDef="let tutorial">{{ tutorial.title }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type of user</th>
+        <td mat-cell *matCellDef="let tutorial">
+          {{ tutorial.user_type_ids[0]?.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let tutorial">
+          <div [innerHTML]="tutorial.description"></div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action" class="action">
+        <th mat-header-cell *matHeaderCellDef>Action</th>
+        <td mat-cell *matCellDef="let tutorial">
+          <button mat-mini-fab (click)="redirectToTutorial(tutorial.link)">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+          <mat-icon>edit</mat-icon>
+          <button mat-mini-fab (click)="deleteTutorial(tutorial._id)">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-icon>send</mat-icon>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </mat-table>
+  </div>
+</div>
